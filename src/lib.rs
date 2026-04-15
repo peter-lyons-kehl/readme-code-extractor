@@ -1,4 +1,4 @@
-#![doc = top_level!() ]
+#![doc = top_level!( )]
 all_by_file!(top_level, "some-file.toml");
 
 pub use readme_code_extractor_proc::{all, nth};
@@ -35,34 +35,42 @@ macro_rules! all_by_file {
     ( $name_of_new_extractor_macro:ident, $config_file_path:literal ) => {
         const _: () = {
             const _: &str = $config_file_path;
-            // We have to use `include_str!`, so that any change to the config file gets notice by
-            // rustc/cargo.
+            // We have to use `include_str!`, so that any change to the config file gets noticed by
+            // rustc/cargo, so that on next `cargo check` amd similar they rebuild the crate.
             ::core::hint::black_box(::core::include_str!($config_file_path));
         };
 
-        // Create an accessor/applier macro.
+        // Create an extractor macro. In case of `all_by_file` we don't strictly need it, but then
+        // the user would have to guarantee that she would
+        // `::core::hint::black_box(::core::include_str!($config_file_path));` on her own. And that
+        // allows for human error.
+        //
+        // (In case of `nth_by_file` we do need to create an extractor macro either way, because of
+        // the extra parameter `n`. See `nth_by_file`.)
         //
         // We do HAVE TO `macro_export` it. Otherwise it can't be used in `#[doc = ... ]` or `#![doc
-        // = ... ]` (which are processed in a crate separate to the crate that called this
-        // `all_by_file` macro).
+        // = ... ]` (which are processed in a crate separate to the crate that called `all_by_file`
+        // macro).
         #[macro_export]
         macro_rules! $name_of_new_extractor_macro {
-            () => {
-                //@TODO file => config text
-                ::readme_code_extractor_proc::all!($config_file_path)
-            };
-        }
+                    () => {
+                        // Unfortunately, Rust macros are lazy (and not eager). So here we can't "just tell" or
+                        // `all!` macro to "evaluate"/receive/get result of
+                        // `::core::include_str!($config_file_path)`.
+                        //
+                        // Therefore we call a proc macro, which loads the file and passes its content to `all` macro
+                        ::readme_code_extractor_proc::all!($config_file_path)
+                    };
+                }
     };
 }
 
-/// Like [nth], but load the configuration from a (TOML) file.
+/// Like [nth], but load the configuration from a (TOML) file. See also [all_by_file].
 #[macro_export]
 macro_rules! nth_by_file {
     ( $name_of_new_extractor_macro:ident, $config_file_path:literal ) => {
         const _: () = {
             const _: &str = $config_file_path;
-            // We have to use `include_str!`, so that any change to the config file gets notice by
-            // rustc/cargo.
             ::core::hint::black_box(::core::include_str!($config_file_path));
         };
 
