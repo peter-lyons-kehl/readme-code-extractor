@@ -53,15 +53,16 @@ macro_rules! all_by_file {
         // macro).
         #[macro_export]
         macro_rules! $name_of_new_extractor_macro {
-                    () => {
-                        // Unfortunately, Rust macros are lazy (and not eager). So here we can't "just tell" or
-                        // `all!` macro to "evaluate"/receive/get result of
-                        // `::core::include_str!($config_file_path)`.
-                        //
-                        // Therefore we call a proc macro, which loads the file and passes its content to `all` macro
-                        ::readme_code_extractor_proc::all!($config_file_path)
-                    };
-                }
+            () => {
+                // Unfortunately, Rust macros are lazy (and not eager). So here we can't
+                // "just tell" or `all!` macro to "evaluate"/receive/get result of
+                // `::core::include_str!($config_file_path)`.
+                //
+                // Therefore we call a proc macro, which loads the file and passes its
+                // content to `all` macro
+                ::readme_code_extractor_proc::all_by_file!($config_file_path)
+            };
+        }
     };
 }
 
