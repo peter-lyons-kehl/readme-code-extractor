@@ -1,0 +1,26 @@
+[package]
+name = "readme-code-extractor"
+version = "0.1.0"
+
+edition = "2018"
+rust-version = "1.81.0"
+
+license = "BSD-2-Clause OR Apache-2.0 OR MIT"
+
+authors = ["Peter Lyons Kehl<peter.kehl@gmail.com>"]
+description = "Extract code blocks from your README.md (or another Markdown file)."
+
+categories = ["development-tools", "rust-patterns"]
+
+keywords = ["extract", "readme", "macro", "macros"]
+
+repository = "https://github.com/prudent-rs/readme-code-extractor"
+homepage = "https://github.com/prudent-rs/readme-code-extractor"
+
+[lints.rust]
+unexpected_cfgs = { level = "forbid"}
+unknown_lints = { level = "forbid"}
+
+[dependencies]
+# EXACT VERSION with = prefix
+readme-code-extractor-proc = {version="= 0.1.0", path="../readme-code-extractor-proc"}
