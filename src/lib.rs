@@ -3,26 +3,35 @@ all_by_file!(top_level, "some-file.toml");
 
 pub use readme_code_extractor_proc::{all, nth};
 
-//readme_code_extractor_proc::assert_exact_version!{ "0.1.0" }
-
 /// No need to be public.
+///
+/// We can't report the actual version(s), because [panic] macro is not eager, and passing in
+/// (formatting) variables doesn't work in const context. See also
+/// <https://rustc-dev-guide.rust-lang.org/macro-expansion.html#eager-expansion>.
+#[doc = "Testing simple but multiline string literal in doc attribute. It works, BUT NOT FOR TOML
+         - new lines are removed, so we'd need to add them manually: \n\
+        ```\n\
+           // hrhr \n\
+           // hhr \n\
+        ```"]
 const _ASSERT_README_CODE_EXTRACTOR_LIB_VERSION: () = {
     let proc_version = readme_code_extractor_proc::version!();
 
     if !is_exact_version(proc_version) {
-        panic!("prudent-rs/readme-code-extractor-proc is of different version than prudent-rs/readme-code-extractor. Please report this as an issue, along with both versions.");
+        panic!("prudent-rs/readme-code-extractor-proc is of different version than \
+                prudent-rs/readme-code-extractor. Please report this as an issue, along with both \
+                versions.");
     }
 };
 
-// Rust below 1.89.0 reports the following function as "unused", even though it's used for
-// `_ASSERT_README_CODE_EXTRACTOR_LIB_VERSION`. That's why `#[allow(dead_code)]`.
-/// No need to be public.
+// Rust (as of 1.97.0-nightly in April 2026) reports the following function as "unused", even though
+// it's used for `_ASSERT_README_CODE_EXTRACTOR_LIB_VERSION`. See README.md > Related issues.
 #[allow(dead_code)]
 const fn is_exact_version(expected_version: &'static str) -> bool {
+    // We can't use a comparison operator ==, because trait PartialEq is not const (in April 2026).
     matches!(expected_version.as_bytes(), b"0.1.0")
 }
 
-/// No need to be public.
 const _ASSERT_VERSION: () = {
     if !crate::is_exact_version(env!("CARGO_PKG_VERSION")) {
         panic!("prudent-rs/readme-code-extractor has its function is_exact_version() out of date.");
@@ -34,6 +43,7 @@ const _ASSERT_VERSION: () = {
 macro_rules! all_by_file {
     ( $name_of_new_extractor_macro:ident, $config_file_path:literal ) => {
         const _: () = {
+            // Let's assure the literal is a string literal, to simplify error triage.
             const _: &str = $config_file_path;
             // We have to use `include_str!`, so that any change to the config file gets noticed by
             // rustc/cargo, so that on next `cargo check` amd similar they rebuild the crate.

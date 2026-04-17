@@ -2,8 +2,9 @@
 name = "readme-code-extractor"
 version = "0.1.0"
 
-edition = "2018"
-rust-version = "1.81.0"
+edition = "2024"
+# Rust 1.88.0+ is required by readme-code-extractor-lib.
+rust-version = "1.88.0"
 
 license = "BSD-2-Clause OR Apache-2.0 OR MIT"
 
