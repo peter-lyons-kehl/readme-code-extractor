@@ -6,7 +6,8 @@ tests/doctests/elsewhere.
 ## MSRV
 MSRV (minimum supported Rust version), as indicated with `rust-version` in
 [`Cargo.toml`](Cargo.toml), is 1.88.0. However, you will get incorrect (false positive) `dead_code`
-warnings, unless you use Rust 1.89.0+.
+warnings, unless you use Rust 1.89.0+. (See
+[rust-lang/rust#142208](https://github.com/rust-lang/rust/pull/142208).)
 
 <!--
 ## Related issues

@@ -1,5 +1,7 @@
-#![doc = top_level!( )]
-all_by_file!(top_level, "some-file.toml");
+// @TODO
+//
+//#![doc = top_level!( )]
+//all_by_file!(top_level, "some-file.toml");
 
 pub use readme_code_extractor_proc::{all, nth};
 
@@ -18,18 +20,17 @@ const _: () = {
     let proc_version = readme_code_extractor_proc::version!();
 
     if !is_exact_version(proc_version) {
-        panic!("prudent-rs/readme-code-extractor-proc is of different version than \
+        panic!(
+            "prudent-rs/readme-code-extractor-proc is of different version than \
                 prudent-rs/readme-code-extractor. Please report this as an issue, along with both \
-                versions.");
+                versions."
+        );
     }
 };
 
-// Rust (as of 1.97.0-nightly in April 2026) reports the following function as "unused", even though
-// it's used for `_ASSERT_README_CODE_EXTRACTOR_LIB_VERSION`. See README.md > Related issues.
-// #[allow(dead_code)]
 const fn is_exact_version(expected_version: &'static str) -> bool {
     // We can't use a comparison operator ==, because trait PartialEq is not const (in April 2026).
-    matches!(expected_version.as_bytes(), b"0.1.0")
+    matches!(expected_version.as_bytes(), b"0.0.1")
 }
 
 const _: () = {
@@ -38,6 +39,7 @@ const _: () = {
     }
 };
 
+/*
 /// Like [all], but load the configuration from a (TOML) file.
 #[macro_export]
 macro_rules! all_by_file {
@@ -74,7 +76,7 @@ macro_rules! all_by_file {
             };
         }
     };
-}
+}*/
 
 /// Like [nth], but load the configuration from a (TOML) file. See also [all_by_file].
 #[macro_export]
