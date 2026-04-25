@@ -4,6 +4,4 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-readme-code-extractor = {version="0.0.1", path=".."}
-no-panic = "0.1.36"
-snapbox = "1.2.1"
+snapbox = { version="1.2.1", features=["cmd"] }

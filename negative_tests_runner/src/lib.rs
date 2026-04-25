@@ -1,8 +1,22 @@
-use snapbox::cmd::Command;
+#[cfg(test)]
+mod tests {
+    use core::error::Error;
+    use snapbox::cmd::Command;
 
-#[test]
-fn simple_no_panic() {
-    let cmd = Command::new("cargo").arg("build").arg("--release");
-    let cmd = cmd.current_dir( std::fs::canonicalize() );
-    //t.compile_fail("../negative_tests/src/bin/simple_no_panic.rs");
+    #[test]
+    fn simple_no_panic() -> Result<(), Box<dyn Error>> {
+        // Do NOT set arg("--release") if having multiple sequential parts fail with panic!.
+        // Otherwise release will optimize the subsequent panics out!
+        let cmd = Command::new("cargo").arg("build");
+        let cmd = cmd.current_dir(std::fs::canonicalize("../negative_tests")?);
+        
+        let assert = cmd.assert().failure();
+        let output = assert.get_output();
+        let stderr: &str = str::from_utf8( &output.stderr )?;
+
+        assert!( stderr.contains("ERROR[no-panic]: detected panic in function `divide`"));
+        assert!( stderr.contains("ERROR[no-panic]: detected panic in function `slice_access`"));
+
+        Ok(())
+    }
 }
