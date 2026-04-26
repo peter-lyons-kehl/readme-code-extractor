@@ -5,8 +5,9 @@ mod tests {
 
     #[test]
     fn simple_no_panic() -> Result<(), Box<dyn Error>> {
-        // Do NOT set arg("--release") if having multiple sequential parts fail with panic!.
-        // Otherwise release will optimize the subsequent panics out!
+        // Do NOT set arg("--release") if having multiple sequential parts where each fails with
+        // panic!. Otherwise release build will optimize the subsequent panics out! This is also
+        // enforced by ../negative_tests/src/lib.rs
         let cmd = Command::new("cargo").arg("build");
         let cmd = cmd.current_dir(std::fs::canonicalize("../negative_tests")?);
         
