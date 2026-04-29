@@ -2,6 +2,10 @@
 
 ## unpublished (only more important decision points listed)
 
+### April 27, 2026
+
+- `all_by_file` macro
+
 ### April 25, 2026
 
 - stopped using `trybuild` crate in [negative_tests_runner/`](negative_tests_runner/). See
