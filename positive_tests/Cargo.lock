@@ -93,6 +93,7 @@ name = "readme-code-extractor-lib"
 version = "0.0.1"
 dependencies = [
  "proc-macro2",
+ "proc-macro2-diagnostics",
  "serde",
  "toml",
 ]

@@ -9,8 +9,11 @@ MSRV (minimum supported Rust version), as indicated with `rust-version` in
 warnings, unless you use Rust 1.89.0+. (See
 [rust-lang/rust#142208](https://github.com/rust-lang/rust/pull/142208).)
 
-<!--
 ## Related issues
 
 Please give thumbs up (and contribute, if you can) to
--->
+
+- [dtolnay/no-panic#28](https://github.com/dtolnay/no-panic/issues/28) no-panic currently cannot be
+  used in doctests
+- [dtolnay/no-panic#78](https://github.com/dtolnay/no-panic/issues/78) Not working (false negative)
+  in integration tests
