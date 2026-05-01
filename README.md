@@ -13,6 +13,8 @@ warnings, unless you use Rust 1.89.0+. (See
 
 Please give thumbs up (and contribute, if you can) to
 
+- [SergioBenitez/proc-macro2-diagnostics#13](https://github.com/SergioBenitez/proc-macro2-diagnostics/issues/13)
+  defect: Error message and details missing, when macro fails to generate main() on STABLE
 - [dtolnay/no-panic#28](https://github.com/dtolnay/no-panic/issues/28) no-panic currently cannot be
   used in doctests
 - [dtolnay/no-panic#78](https://github.com/dtolnay/no-panic/issues/78) Not working (false negative)
