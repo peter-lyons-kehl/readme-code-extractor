@@ -2,6 +2,17 @@
 
 ## unpublished (only more important decision points listed)
 
+### May 1, 2026
+
+Error handling:
+
+- `public::ext` module (extension traits) for
+  - errors implementing `Debug`, `ToString` or `Into<String>`
+  - error indicators
+    - containers holding those errors: `Result` and `Option`
+    - `bool`
+- `public::assert` module with more intentional function names
+
 ### April 30, 2026
 
 Error handling: `proc_macro2_diagnostics` crate +`DeepDiagnostic`.
