@@ -2,6 +2,10 @@
 
 ## unpublished (only more important decision points listed)
 
+### April 30, 2026
+
+Error handling: `proc_macro2_diagnostics` crate +`DeepDiagnostic`.
+
 ### April 27, 2026
 
 - `all_by_file` macro
