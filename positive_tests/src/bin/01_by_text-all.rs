@@ -1,4 +1,8 @@
-    markdown_file_path = "01.md"
+readme_code_extractor::all!(
+    r##"
+    markdown_file_path = "00.md"
     start_prefix = "#[::no_panic::no_panic] fn main() {"
     
     final_suffix = "}"
+    "##
+);

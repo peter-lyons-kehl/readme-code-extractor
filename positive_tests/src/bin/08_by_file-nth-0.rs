@@ -1,0 +1,1 @@
+readme_code_extractor::nth_by_file!("06_by_file.toml" @ 0);

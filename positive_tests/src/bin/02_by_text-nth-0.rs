@@ -1,9 +1,9 @@
-readme_code_extractor::tag!(
+readme_code_extractor::nth!(
     r##"
-    markdown_file_path = "01.md"
+    markdown_file_path = "00.md"
     start_prefix = "#[::no_panic::no_panic] fn main() {"
     
     final_suffix = "}"
     "##
-    any @ "shared"
+    @ 0
 );
