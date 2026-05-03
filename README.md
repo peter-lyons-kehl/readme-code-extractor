@@ -1,12 +1,12 @@
-# readme-code-extractor
+# mce: Markdown Code Extractor
 
-Rust macros to extract part(s) of README.md (or a similar file) and to use them in
+Rust macros to extract part(s) of README.md (or a similar Markdown file) and to use those parts in
 tests/doctests/elsewhere.
 
 ## MSRV
 MSRV (minimum supported Rust version), as indicated with `rust-version` in
 [`Cargo.toml`](Cargo.toml), is 1.88.0. However, you will get incorrect (false positive) `dead_code`
-warnings, unless you use Rust 1.89.0+. (See
+warnings, unless you use Rust 1.89.0+. It's tested only with Rust 1.89.0+. (See
 [rust-lang/rust#142208](https://github.com/rust-lang/rust/pull/142208).)
 
 ## Related issues

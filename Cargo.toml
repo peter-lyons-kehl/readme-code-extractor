@@ -1,22 +1,22 @@
 [package]
-name = "readme-code-extractor"
+name = "mce"
 version = "0.0.1"
 
 edition = "2024"
-# Rust 1.88.0+ is required by readme-code-extractor-lib.
+# Rust 1.88.0+ is required by mce-lib.
 rust-version = "1.88.0"
 
 license = "BSD-2-Clause OR Apache-2.0 OR MIT"
 
 authors = ["Peter Lyons Kehl<peter.kehl@gmail.com>"]
-description = "Extract code blocks from your README.md (or another Markdown file)."
+description = "Markdown Code Extractor: Collect code blocks from your README.md (or another Markdown file). Optional filtering. Add optional prefix and suffix to each code block, as well as the overall output. Example: use with no-panic"
 
-categories = ["development-tools", "rust-patterns"]
+categories = ["development-tools", "development-tools::testing", "rust-patterns"]
 
-keywords = ["extract", "readme", "macro", "macros"]
+keywords = ["extract", "readme", "macro", "macros", "panic"]
 
-repository = "https://github.com/prudent-rs/readme-code-extractor"
-homepage = "https://github.com/prudent-rs/readme-code-extractor"
+repository = "https://github.com/prudent-rs/mce"
+homepage = "https://github.com/prudent-rs/mce"
 
 [lints.rust]
 unexpected_cfgs = { level = "forbid"}
@@ -24,4 +24,4 @@ unknown_lints = { level = "forbid"}
 
 [dependencies]
 # EXACT VERSION with = prefix
-readme-code-extractor-proc = {version="= 0.0.1", path="../readme-code-extractor-proc"}
+mce-proc = {version="= 0.0.1", path="../mce-proc"}
