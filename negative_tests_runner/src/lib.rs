@@ -5,9 +5,9 @@ mod tests {
 
     #[test]
     fn simple_no_panic() -> Result<(), Box<dyn Error>> {
-        // Do NOT set arg("--release") if having multiple sequential parts where each fails with
-        // panic!. Otherwise release build will optimize the subsequent panics out! Then the error
-        // message(s) would not match.
+        // Do NOT set arg("--release") - build in debug mode only. Otherwise, since we have multiple
+        // sequential parts where each fails with panic!, a release build would optimize the
+        // subsequent panics out. Then the error message(s) would not match.
         //
         // That is also enforced by ../negative_tests/src/lib.rs
         let cmd = Command::new("cargo").arg("build");
