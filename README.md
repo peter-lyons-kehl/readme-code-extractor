@@ -19,3 +19,8 @@ Please give thumbs up (and contribute, if you can) to
   used in doctests
 - [dtolnay/no-panic#78](https://github.com/dtolnay/no-panic/issues/78) Not working (false negative)
   in integration tests
+
+## Side fruit
+
+- https://github.com/dtolnay/proc-macro2/pull/536 Span::file and Span::local_file suggest to use Rust 1.88 when using stable
+

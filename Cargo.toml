@@ -25,3 +25,6 @@ unknown_lints = { level = "forbid"}
 [dependencies]
 # EXACT VERSION with = prefix
 mce-proc = {version="= 0.0.1", path="../mce-proc"}
+
+[package.metadata.docs.rs]
+default-target = "x86_64-unknown-linux-gnu"
