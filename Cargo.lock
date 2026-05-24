@@ -3,6 +3,14 @@
 version = 4
 
 [[package]]
+name = "dis"
+version = "0.0.1"
+dependencies = [
+ "proc-macro2",
+ "proc-macro2-diagnostics",
+]
+
+[[package]]
 name = "mce"
 version = "0.0.1"
 dependencies = [
@@ -13,9 +21,9 @@ dependencies = [
 name = "mce-lib"
 version = "0.0.1"
 dependencies = [
+ "dis",
  "proc-macro2",
  "proc-macro2-diagnostics",
- "proc-macro2-diagnostics-more",
  "serde",
  "toml",
 ]
@@ -24,11 +32,11 @@ dependencies = [
 name = "mce-proc"
 version = "0.0.1"
 dependencies = [
+ "dis",
  "mce-lib",
  "proc-macro-rules",
  "proc-macro2",
  "proc-macro2-diagnostics",
- "proc-macro2-diagnostics-more",
  "quote",
  "serde",
  "syn",
@@ -83,14 +91,6 @@ dependencies = [
  "syn",
  "version_check",
  "yansi",
-]
-
-[[package]]
-name = "proc-macro2-diagnostics-more"
-version = "0.0.1"
-dependencies = [
- "proc-macro2",
- "proc-macro2-diagnostics",
 ]
 
 [[package]]

@@ -6,7 +6,7 @@
 pub use mce_proc::{all, all_by_file, mce_tag, mce_tag_by_file, nth, nth_by_file};
 
 /// We can't report the actual version(s), because [panic] macro is not eager, and passing in
-/// (formatting) variables doesn't work in const context. See also
+/// (formatting) variables doesn't work in `const` context. See also
 /// <https://rustc-dev-guide.rust-lang.org/macro-expansion.html#eager-expansion>.
 const _: () = {
     let proc_version = mce_proc::version!();
