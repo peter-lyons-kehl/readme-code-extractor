@@ -26,7 +26,7 @@ const fn is_exact_version(expected_version: &'static str) -> bool {
 }
 
 const _: () = {
-    if !crate::is_exact_version(env!("CARGO_PKG_VERSION")) {
+    if !is_exact_version(env!("CARGO_PKG_VERSION")) {
         panic!("prudent-rs/mce has its function is_exact_version() out of date.");
     }
 };
