@@ -1,7 +1,4 @@
-// @TODO
-//
-//#![doc = top_level!( )]
-//all_by_file!(top_level, "some-file.toml");
+#![doc = include_str!("../README.md")]
 
 pub use mce_proc::{all, all_by_file, mce_tag, mce_tag_by_file, nth, nth_by_file};
 
