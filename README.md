@@ -39,6 +39,11 @@ There **are** several crates and methods that generate `README.md` based on othe
 
 Instead, `mce` extracts the code section(s) with no side effects. It's stateless.
 
+## Examples
+
+For now we don't have a separate/detailed documentation. See examples in
+[`positive_tests/src/bin/`](positive_tests/src/bin/).
+
 ## Configuration in TOML only
 
 Configuration is only in TOML, deserialized with [`toml-rs/toml`](https://github.com/toml-rs). No
