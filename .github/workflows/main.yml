@@ -1,0 +1,30 @@
+# - KEEP this in sync with ../../tests-run.sh
+# - BUT, ../../tests-run.sh needs to undo any effects of directory change (`cd`), while here each
+#   GitHub action step starts in the repository directory
+
+name: Tests, doc tests, positive_tests, negative_tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    # We need at least Rust 1.88.0.
+    # https://hub.docker.com/_/rust/tags?name=alpine&ordering=-last_updated&page=16
+    container: rust:1.88.0-alpine
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: rustup components
+        shell: sh
+        run: |
+          ./tests-setup-rustup.sh
+          ./tests-setup-alpine.sh
+
+      - name: tests-run-default.sh
+        shell: sh
+        run: |
+          ./tests-run-default.sh

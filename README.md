@@ -1,3 +1,5 @@
+[![GitHub_Actions](https://github.com/prudent-rs/mce/actions/workflows/main.yml/badge.svg)](https://github.com/prudent-rs/mce/actions)
+
 # mce: Markdown Code Extractor
 
 Rust macros to extract part(s) of `README.md` (or a similar Markdown file) and to use those parts in
