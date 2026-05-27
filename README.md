@@ -48,7 +48,10 @@ For now we don't have a separate/detailed documentation. See examples in
    https://github.com/prudent-rs/mce/blob/HEAD/positive_tests/src/bin/, which auto-converts to the
    commit link!
 2. https://docs.rs/mce/latest/mce/ would generate the link as
-   https://docs.rs/mce/latest/mce/positive_tests/src/bin/, which doesn't exist.
+   https://docs.rs/mce/latest/mce/positive_tests/src/bin/, which doesn't exist, because as per
+   https://doc.rust-lang.org/nightly/cargo/reference/manifest.html#the-exclude-and-include-fields
+   > "Regardless of whether exclude or include..."
+   > "Any sub-packages will be skipped (any subdirectory that contains a Cargo.toml file)."
 -->
 
 ## Configuration in TOML only
